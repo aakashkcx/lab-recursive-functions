@@ -27,6 +27,7 @@ maximum (x:xs) = max x (maximum xs)
 
 intersperse :: a -> [a] -> [a]
 intersperse _ [x]    = [x]
+intersperse _ []     = []
 intersperse y (x:xs) = x : y : intersperse y xs
 
 subsequences :: [a] -> [[a]]
