@@ -16,15 +16,21 @@ import Prelude hiding ( elem, maximum, intersperse, subsequences )
 -- Recursive and higher-order functions
 
 elem :: Eq a => a -> [a] -> Bool
-elem = undefined
+elem n []     = False
+elem n (x:xs)
+    | n == x    = True
+    | otherwise = elem n xs
 
 maximum :: Ord a => [a] -> a
-maximum = undefined
+maximum [x]    = x
+maximum (x:xs) = max x (maximum xs)
 
 intersperse :: a -> [a] -> [a]
-intersperse = undefined
+intersperse _ [x]    = [x]
+intersperse y (x:xs) = x : y : intersperse y xs
 
 subsequences :: [a] -> [[a]]
-subsequences = undefined
+subsequences [] = [[]]
+subsequences (x:xs) = subsequences xs ++ map (x:) (subsequences xs)
 
 --------------------------------------------------------------------------------
